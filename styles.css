@@ -1,0 +1,443 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.password-input-section {
+    margin-bottom: 40px;
+}
+
+.input-group {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.password-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.password-field input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.password-field input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    color: #667eea;
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.analyze-btn:active {
+    transform: translateY(0);
+}
+
+.results-section {
+    margin-top: 40px;
+}
+
+.strength-meter {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.strength-meter h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.meter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.meter-bar {
+    width: 300px;
+    height: 20px;
+    background: #e1e5e9;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4757, #ffa502, #2ed573, #1e90ff);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.strength-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-width: 100px;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.analysis-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    border-left: 4px solid #667eea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analysis-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.analysis-card h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.analysis-card h4 i {
+    color: #667eea;
+}
+
+.time-estimates {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.time-estimate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid;
+}
+
+.time-estimate.instant { border-left-color: #ff4757; }
+.time-estimate.seconds { border-left-color: #ffa502; }
+.time-estimate.minutes { border-left-color: #2ed573; }
+.time-estimate.hours { border-left-color: #1e90ff; }
+.time-estimate.days { border-left-color: #9c88ff; }
+.time-estimate.years { border-left-color: #00d2d3; }
+
+.vulnerabilities-list,
+.suggestions-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vulnerabilities-list li,
+.suggestions-list li {
+    padding: 10px 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vulnerabilities-list li {
+    border-left-color: #ff4757;
+    color: #d63031;
+}
+
+.suggestions-list li {
+    border-left-color: #2ed573;
+    color: #00b894;
+}
+
+.hash-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hash-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e1e5e9;
+}
+
+.hash-item h5 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.hash-value {
+    font-family: 'Courier New', monospace;
+    background: #f1f2f6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    word-break: break-all;
+    color: #2f3542;
+}
+
+.attack-simulation {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.attack-simulation h4 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.attack-simulation h4 i {
+    color: #667eea;
+}
+
+.attack-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.attack-result {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid;
+    transition: transform 0.3s ease;
+}
+
+.attack-result:hover {
+    transform: translateY(-3px);
+}
+
+.attack-result.dictionary { border-left-color: #ff4757; }
+.attack-result.brute-force { border-left-color: #ffa502; }
+.attack-result.rainbow-table { border-left-color: #2ed573; }
+.attack-result.social-engineering { border-left-color: #1e90ff; }
+
+.attack-result h5 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.attack-result p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.attack-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.attack-status.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.attack-status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-card h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card h4 i {
+    color: #667eea;
+}
+
+.info-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .attack-results {
+        grid-template-columns: 1fr;
+    }
+    
+    .meter-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .meter-bar {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Strength Colors */
+.strength-very-weak { color: #ff4757; }
+.strength-weak { color: #ffa502; }
+.strength-medium { color: #ffa502; }
+.strength-strong { color: #2ed573; }
+.strength-very-strong { color: #00d2d3; }
